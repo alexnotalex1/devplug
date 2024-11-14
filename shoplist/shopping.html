@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="shopping.css">      
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select all list items and the heading
+            const listItems = document.querySelectorAll("ul.list li");
+            const heading = document.querySelector("h2");
+
+            // Initialize the counter for the total items
+            let itemCount = listItems.length;
+
+            // Loop through each item in the list
+            listItems.forEach(item => {
+                // Get the text content of each list item
+                const itemName = item.textContent.trim().toLowerCase();
+
+                // Check if the item matches "fresh figs," "kale," or "honey"
+                if (itemName === "fresh figs" || itemName === "kale" || itemName === "honey") {
+                    // Change the class to 'cool'
+                    item.className = "cool";
+                }
+            });
+
+            // Update the heading text to show the total item count
+            heading.textContent = `Buy Groceries (${itemCount} items)`;
+        });
+    </script>
+</head> 
+
+<body>
+    <h1>Shopping List</h1>
+    <form action="add" method="get">
+        <label for="item">Add item</label>
+        <input type="text" name="item" id="item">
+        <input type="submit" value="Need" id="addNeed">
+        <input type="submit" value="Have" id="addHave">
+    </form>
+
+    <h2>Need:</h2>
+    <ul class="list">
+        <li><input type="checkbox" name="item">fresh figs <a href="#">&#10006;</a></li>
+        <li><input type="checkbox" name="item">kale <a href="#">&#10006;</a></li>
+        <li><input type="checkbox" name="item">honey <a href="#">&#10006;</a></li>
+    </ul>
+
+    <script src="shopping.js"></script>
+</body>
+</html>
